@@ -6,8 +6,7 @@ class ResidentContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            allResidents: [],
-            allResidentsRender: []
+            allResidents: []
         }
     }
 
@@ -23,22 +22,12 @@ class ResidentContainer extends React.Component {
                     .then(data => this.changeState(data, residentsArray))
             }
         }
-        if (this.state.allResidents !== prevState.allResidents) {
-            console.log(prevState.allResidents)
-            console.log(this.state.allResidents)
-            console.log(typeof (this.state.allResidents))
-            const varAllResidents = this.state.allResidents
-            console.log(varAllResidents)
-            console.log(typeof (varAllResidents))
-            const mapAllResidents = varAllResidents.forEach(item => item.id)
-            this.setState({ allResidents: varAllResidents })
-            console.log(mapAllResidents)
-        }
     }
 
     changeState(data, residentsArray) {
         residentsArray.push(data)
         this.setState({ allResidents: residentsArray })
+        console.log(residentsArray.length)
     }
 
     render() {
@@ -49,11 +38,13 @@ class ResidentContainer extends React.Component {
                         this.props.residentsArray.length > 0 ?
                             <ul>
                                 {this.state.allResidents.map(item => (
+                                    /* this.setState({ residentsLength: this.props.residentsArray.length }), */
                                     <ResidentInfo
                                         id={item.id}
                                         image={item.image}
                                         name={item.name}
                                         status={item.status}
+                                        species={item.species}
                                         location={item.location.name}
                                         episodes={item.episode.length} episodes
                                     />

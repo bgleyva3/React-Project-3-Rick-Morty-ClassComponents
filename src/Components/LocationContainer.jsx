@@ -55,10 +55,6 @@ class LocationContainer extends React.Component {
             <div>
                 <SearchBox executeFetch={this.executeFetch} setState={this.setState} locationName={this.state.locationName} />
                 <LocationInfo data={this.state.data} />
-                {   console.log("------------------"),
-                    console.log(this.state.data.residents),
-                    console.log("------------------")
-                }
                 <ResidentContainer residentsArray={this.state.data.residents} />
             </div>
         )
